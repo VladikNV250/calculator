@@ -2,32 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+@layer components {
+    /* Standard Blue Theme */
+    .SB_btn-primary { @apply flex justify-center items-center aspect-square w-full h-full bg-slate-50/30 text-white text-4xl hover:bg-slate-50/40 active:bg-slate-300/30 }
+    .SB_btn-secondary { @apply flex justify-center items-center aspect-square w-full h-full bg-slate-50/20 text-white text-4xl hover:bg-slate-50/30 active:bg-slate-300/20 }
+    .SB_display { @apply flex justify-end items-end flex-col w-full h-28 p-0.5 pb-2 }
+    .SB_current-input { @apply text-white }
+    .SB_old-input { @apply text-gray-200 text-2xl }
+    .SB_grid-buttons { @apply grid w-full p-0.5 gap-0.5 grid-cols-4 auto-rows-fr }
+    .SB_calculator { @apply w-80 min-h-96 bg-gradient-to-b from-teal-500 to-sky-600 to-70% overflow-hidden }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+    /* Standard Red Theme */
+    .SR_btn-primary { @apply flex justify-center items-center aspect-square w-full h-full bg-slate-50/30 text-white text-4xl hover:bg-slate-50/40 active:bg-slate-300/30 }
+    .SR_btn-secondary { @apply flex justify-center items-center aspect-square w-full h-full bg-slate-50/20 text-white text-4xl hover:bg-slate-50/30 active:bg-slate-300/20 }
+    .SR_display { @apply flex justify-end items-end flex-col w-full h-28 p-0.5 pb-2 }
+    .SR_current-input { @apply text-white }
+    .SR_old-input { @apply text-gray-200 text-2xl }
+    .SR_grid-buttons { @apply grid w-full p-0.5 gap-0.5 grid-cols-4 auto-rows-fr }
+    .SR_calculator { @apply w-80 min-h-96 bg-gradient-to-b from-orange-600 to-red-600 to-70% overflow-hidden }
+    
+    /* Standard Green Theme */
+    .SG_btn-primary { @apply flex justify-center items-center aspect-square w-full h-full bg-slate-50/30 text-white text-4xl hover:bg-slate-50/40 active:bg-slate-300/30 }
+    .SG_btn-secondary { @apply flex justify-center items-center aspect-square w-full h-full bg-slate-50/20 text-white text-4xl hover:bg-slate-50/30 active:bg-slate-300/20 }
+    .SG_display { @apply flex justify-end items-end flex-col w-full h-28 p-0.5 pb-2 }
+    .SG_current-input { @apply text-white }
+    .SG_old-input { @apply text-gray-200 text-2xl }
+    .SG_grid-buttons { @apply grid w-full p-0.5 gap-0.5 grid-cols-4 auto-rows-fr }
+    .SG_calculator { @apply w-80 min-h-96 bg-gradient-to-b from-emerald-500 to-green-600 to-70% overflow-hidden }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    /* Iphone Theme */
+    .IT_btn-first-type { @apply flex justify-center items-center aspect-square w-full h-full rounded-full bg-zinc-700 text-zinc-200 text-4xl hover:bg-zinc-600 active:bg-zinc-800 }
+    .IT_btn-second-type { @apply flex justify-center items-center aspect-square w-full h-full rounded-full bg-zinc-400 text-zinc-800 text-4xl hover:bg-zinc-300 active:bg-zinc-500 }
+    .IT_btn-third-type { @apply flex justify-center items-center aspect-square w-full h-full rounded-full bg-amber-500 text-white text-4xl hover:bg-amber-400 active:bg-amber-600 }
+    .IT_display { @apply flex justify-end items-end flex-col w-full h-32 p-0.5 pb-2 }
+    .IT_current-input { @apply text-white }
+    .IT_old-input { @apply text-gray-400 text-2xl }
+    .IT_grid-buttons { @apply grid w-full p-0.5 gap-2 grid-cols-4 auto-rows-fr }
+    .IT_calculator { @apply w-80 min-h-96 rounded-xl p-2 bg-zinc-950 overflow-hidden }
+
+    /* Purple Laguna Theme */
+    .PL_btn-first-type { @apply flex justify-center items-center aspect-square w-full h-full text-black text-4xl hover:bg-gray-200 active:bg-gray-300 }
+    .PL_btn-second-type { @apply flex justify-center items-center aspect-square w-full h-full text-violet-600 text-4xl hover:bg-gray-200 active:bg-gray-300 }
+    .PL_btn-third-type { @apply flex justify-center items-center aspect-square w-full h-full bg-violet-600 text-white text-4xl hover:bg-violet-500 active:bg-violet-700 }
+    .PL_display { @apply flex justify-end items-end flex-col w-full h-32 p-2 pb-2 }
+    .PL_current-input { @apply text-white }
+    .PL_old-input { @apply text-gray-200 text-2xl }
+    .PL_grid-buttons { @apply grid w-full grid-cols-4 auto-rows-fr bg-white rounded-3xl overflow-hidden }
+    .PL_calculator { @apply w-80 min-h-96 bg-violet-400 rounded-3xl overflow-hidden }
+
+    /* Dark Laguna Theme */
+    .DL_btn-first-type { @apply flex justify-center items-center aspect-square w-full h-full text-black text-4xl hover:bg-gray-200 active:bg-gray-300 }
+    .DL_btn-second-type { @apply flex justify-center items-center aspect-square w-full h-full text-zinc-800 text-4xl hover:bg-gray-200 active:bg-gray-300 }
+    .DL_btn-third-type { @apply flex justify-center items-center aspect-square w-full h-full bg-zinc-800 text-white text-4xl hover:bg-zinc-700 active:bg-zinc-900 }
+    .DL_display { @apply flex justify-end items-end flex-col w-full h-32 p-2 pb-2 }
+    .DL_current-input { @apply text-white }
+    .DL_old-input { @apply text-gray-200 text-2xl }
+    .DL_grid-buttons { @apply grid w-full grid-cols-4 auto-rows-fr bg-white rounded-3xl overflow-hidden }
+    .DL_calculator { @apply w-80 min-h-96 bg-zinc-800 rounded-3xl overflow-hidden }
 }
