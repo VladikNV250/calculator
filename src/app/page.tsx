@@ -55,18 +55,19 @@ export default function Home() {
           onChange={(e) => setBackground(e.target.value)}
         />
         <Sidemenu visibility={visibility.Themes} nestingLevel={1}>
-            {Themes.map(theme => 
+            {Themes.map((theme, index) => 
               <button
                 className="text-white text-xl text-center w-full py-1.5 hover:bg-gray-700"
                 onClick={() => setTheme(theme.name)}
+                key={index}
               >
                 {theme.name}
               </button>
             )}
         </Sidemenu>
         <Sidemenu visibility={visibility.History} nestingLevel={1}>
-          {history.map(record => 
-            <div onClick={() => restoreRecord(record)} className="w-full py-2 text-white text-xl text-center cursor-default hover:bg-gray-700">{record}</div>
+          {history.map((record, index) => 
+            <div key={index} onClick={() => restoreRecord(record)} className="w-full py-2 text-white text-xl text-center cursor-default hover:bg-gray-700">{record}</div>
           )}
         </Sidemenu>
         <Sidemenu visibility={visibility.Sidebar}>

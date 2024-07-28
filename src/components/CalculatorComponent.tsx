@@ -75,7 +75,7 @@ export default function CalculatorComponent({themeName, addRecord, restoredRecor
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [])
+  })
 
   useEffect(() => {
     if (pressedKey !== null) {
