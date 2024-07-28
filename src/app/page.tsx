@@ -8,7 +8,7 @@ import { Themes } from "./assets/Themes";
 
 export default function Home() {
   const [theme, setTheme] = useState<string>("Standard Red");
-  const [history, setHistory] = useState<string[]>(["32 + 6 = 38.3", "42 - 4.2 = 37.8", "6 * 8 = 48", "64 / 4 = 16.33333333"]);
+  const [history, setHistory] = useState<string[]>([]);
   const [restoredRecord, setRestoredRecord] = useState<string>("");
   const [background, setBackground] = useState<string>("#64748B");
   const [visibility, setVisibility] = useState({
