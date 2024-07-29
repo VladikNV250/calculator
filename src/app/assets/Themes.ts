@@ -1,4 +1,38 @@
-export const Themes = 
+export type ThemeClass = 
+{
+    class: string, 
+    pressed?: string
+}
+export type Theme = 
+{
+    name: string,
+    "0": ThemeClass,
+    "1": ThemeClass,
+    "2": ThemeClass,
+    "3": ThemeClass,
+    "4": ThemeClass,
+    "5": ThemeClass,
+    "6": ThemeClass,
+    "7": ThemeClass,
+    "8": ThemeClass,
+    "9": ThemeClass,
+    ".": ThemeClass,
+    "AC": ThemeClass,
+    "+": ThemeClass,
+    "-": ThemeClass,
+    "*": ThemeClass,
+    "/": ThemeClass,
+    "=": ThemeClass,
+    "%": ThemeClass,
+    "+/-": ThemeClass,
+    "display": ThemeClass,
+    "current-input": ThemeClass,
+    "old-input": ThemeClass,
+    "grid-buttons": ThemeClass,
+    "calculator": ThemeClass,
+}
+
+export const Themes: Theme[] = 
 [
     {
         name: "Standard Blue",

@@ -2,13 +2,12 @@
 import CalculatorComponent from "@/components/CalculatorComponent";
 import Sidemenu from "@/components/Sidemenu";
 import clsx from "clsx";
-import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Themes } from "./assets/Themes";
 
 export default function Home() {
   const [theme, setTheme] = useState<string>("Standard Red");
-  const [history, setHistory] = useState<string[]>(["32 + 6 = 38.3", "42 - 4.2 = 37.8", "6 * 8 = 48", "64 / 4 = 16.33333333"]);
+  const [history, setHistory] = useState<string[]>([]);
   const [restoredRecord, setRestoredRecord] = useState<string>("");
   const [background, setBackground] = useState<string>("#64748B");
   const [visibility, setVisibility] = useState({
@@ -46,6 +45,9 @@ export default function Home() {
     setRestoredRecord(result);
   }
 
+  const addRecord = useCallback((record: string) => setHistory([...history, record]), [history])
+
+
   return (
     <main className="relative min-w-screen min-h-screen flex justify-center items-center pb-32" style={{backgroundColor: background}}>
         <input 
@@ -66,8 +68,18 @@ export default function Home() {
             )}
         </Sidemenu>
         <Sidemenu visibility={visibility.History} nestingLevel={1}>
-          {history.map((record, index) => 
-            <div key={index} onClick={() => restoreRecord(record)} className="w-full py-2 text-white text-xl text-center cursor-default hover:bg-gray-700">{record}</div>
+          { history.length === 0 
+          ? <div className="w-full py-2 text-white text-xl text-center">
+              You don&apos;t calculate anything<br />History is empty
+            </div> 
+          : history.map((record, index) => 
+            <div 
+              key={index} 
+              onClick={() => restoreRecord(record)} 
+              className="w-full py-2 text-white text-xl text-center cursor-default hover:bg-gray-700"
+            >
+              {record}
+            </div>
           )}
         </Sidemenu>
         <Sidemenu visibility={visibility.Sidebar}>
@@ -96,17 +108,17 @@ export default function Home() {
         <button
           className={clsx(
             "absolute top-24 left-56 transition-all duration-300",
-            visibility.Themes || visibility.History ? "opacity-100" : "opacity-0",
+            visibility.Themes || visibility.History ? "opacity-100 visible" : "opacity-0 invisible",
           )}
           onClick={() => switchMenu("To-Sidebar")}
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" className="bi bi-arrow-left text-gray-50" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
+            <path fillRule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
           </svg>
         </button>
         <CalculatorComponent 
           themeName={theme} 
-          addRecord={(record: string) => setHistory([...history, record])} 
+          addRecord={addRecord} 
           restoredRecord={restoredRecord}
         />
     </main>
